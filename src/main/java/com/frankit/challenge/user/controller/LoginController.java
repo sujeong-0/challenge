@@ -2,7 +2,7 @@ package com.frankit.challenge.user.controller;
 
 import com.frankit.challenge.user.dto.LoginRequest;
 import com.frankit.challenge.user.dto.LoginResponse;
-import com.frankit.challenge.user.service.AuthServiceImpl;
+import com.frankit.challenge.user.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.*;
  * 3/1/25        ggong       최초 생성
  */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 public class LoginController {
-	private final AuthServiceImpl authService;
+	private final AuthService authService;
+	private final String AUTHORIZATION_HEADER_PREFIX = "Bearer ";
 
-	public LoginController(AuthServiceImpl authService) {this.authService = authService;}
+	public LoginController(AuthService authService) {this.authService = authService;}
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
@@ -35,7 +36,7 @@ public class LoginController {
 
 	@PostMapping("/logout")
 	public ResponseEntity<String> logout(@RequestHeader("Authorization") String authorizationHeader) {
-		if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+		if (authorizationHeader == null || !authorizationHeader.startsWith(AUTHORIZATION_HEADER_PREFIX)) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("유효하지 않은 토큰");
 		}
 

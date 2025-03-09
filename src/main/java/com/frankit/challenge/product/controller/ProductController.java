@@ -4,9 +4,8 @@ import com.frankit.challenge.product.dto.ProductRequest;
 import com.frankit.challenge.product.dto.ProductResponse;
 import com.frankit.challenge.product.entity.Product;
 import com.frankit.challenge.product.service.ProductService;
-import com.frankit.challenge.product.service.ProductServiceImpl;
 import com.frankit.challenge.user.entity.User;
-import com.frankit.challenge.user.service.AuthServiceImpl;
+import com.frankit.challenge.user.service.AuthService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * description    :
+ * description    : 상품과 상품 옵션의 추가, 수정, 삭제를 담당하는 컨트롤러
  * packageName    : com.frankit.challenge.product.controller
  * fileName       : IntelliJ IDEA
  * author         : ggong
@@ -28,15 +27,15 @@ import org.springframework.web.bind.annotation.*;
  * 3/7/25        ggong       최초 생성
  */
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/v1/product")
 public class ProductController {
 
 	private final ProductService productService;
-	private final AuthServiceImpl AuthService;
+	private final AuthService authService;
 
-	public ProductController(ProductServiceImpl productService, AuthServiceImpl authService) {
+	public ProductController(ProductService productService, AuthService authService) {
 		this.productService = productService;
-		AuthService = authService;
+		this.authService = authService;
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class ProductController {
 	@PostMapping
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<Product> createProduct(@RequestBody ProductRequest request, @AuthenticationPrincipal UserDetails userDetails) {
-		User user = AuthService.findByEmail(userDetails.getUsername());
+		User user = authService.findByEmail(userDetails.getUsername());
 		Product savedProduct = productService.saveProduct(request, user);
 		return ResponseEntity.ok(savedProduct);
 	}
@@ -94,7 +93,7 @@ public class ProductController {
 	@PreAuthorize("hasRole('USER') and hasPermission(#userDetails.username, 'isUser') and hasPermission(#productId, 'isOwner')")
 	public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long productId, @RequestBody ProductRequest request,
 	                                                     @AuthenticationPrincipal UserDetails userDetails) {
-		User user = AuthService.findByEmail(userDetails.getUsername());
+		User user = authService.findByEmail(userDetails.getUsername());
 		Product updatedProduct = productService.updateProduct(productId, request,user);
 		return ResponseEntity.ok(ProductResponse.fromEntity(updatedProduct));
 	}

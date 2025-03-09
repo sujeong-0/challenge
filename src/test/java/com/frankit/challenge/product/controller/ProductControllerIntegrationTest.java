@@ -145,7 +145,7 @@ class ProductControllerIntegrationTest {
 	void 데이터_조회_키워드_페이징() throws Exception {
 
 		final String KEYWORD = "상품명";
-		mockMvc.perform(get("/product").param("keyword", KEYWORD).param("page", "0").param("size", "10").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/api/v1/product").param("keyword", KEYWORD).param("page", "0").param("size", "10").contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$.content").isNotEmpty()) // 조회된 데이터가 있어야 함
 		       .andExpect(jsonPath("$.content", hasSize(lessThanOrEqualTo(10)))) // 결과 개수가 10개 미만이어야 함
@@ -158,7 +158,7 @@ class ProductControllerIntegrationTest {
 	@Test
 	@Order(2)
 	void 데이터_조회_페이징() throws Exception {
-		mockMvc.perform(get("/product").param("page", "0").param("size", "10").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/api/v1/product").param("page", "0").param("size", "10").contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$.content").isNotEmpty()) // 조회된 데이터가 있어야 함
 		       .andExpect(jsonPath("$.content", hasSize(lessThanOrEqualTo(10)))) // 결과 개수가 10개 미만이어야 함
@@ -170,7 +170,7 @@ class ProductControllerIntegrationTest {
 	@Test
 	@Order(3)
 	void 데이터_조회_기본() throws Exception {
-		mockMvc.perform(get("/product").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/api/v1/product").contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$.content").isNotEmpty()) // 조회된 데이터가 있어야 함
 		       .andExpect(jsonPath("$.content", hasSize(lessThanOrEqualTo(10))))// 결과 개수가 10개 미만이어야 함
@@ -183,7 +183,7 @@ class ProductControllerIntegrationTest {
 	@Order(4)
 	@DisplayName("상품 조회 성공")
 	void 상품_조회_성공() throws Exception {
-		mockMvc.perform(get("/product/{productId}", testProduct.getId()).contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/api/v1/product/{productId}", testProduct.getId()).contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$.name").value(testProduct.getName()))
 		       .andExpect(jsonPath("$.description").value(testProduct.getDescription()))
@@ -208,7 +208,7 @@ class ProductControllerIntegrationTest {
 	@Order(5)
 	@DisplayName("상품 조회 실패 : 존재하지 않는 상품")
 	void 상품_조회_실패() throws Exception {
-		mockMvc.perform(get("/product/{productId}", 9999).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+		mockMvc.perform(get("/api/v1/product/{productId}", 9999).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
 	}
 
 	@Test
@@ -219,7 +219,7 @@ class ProductControllerIntegrationTest {
 		ProductRequest request = new ProductRequest("수정된 상품명", "수정된 설명", 12000, 3000, null);
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(1))
+		mockMvc.perform(put("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(1))
 		                                                                .contentType(MediaType.APPLICATION_JSON)
 		                                                                .content(objectMapper.writeValueAsString(request)))
 		       .andExpect(status().isForbidden()); // 다른 유저가 수정 시도 시 403 Forbidden 반환
@@ -233,7 +233,7 @@ class ProductControllerIntegrationTest {
 		ProductRequest request = new ProductRequest("수정된 상품명", "수정된 설명", 12000, 3000, null);
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", 9999) // 존재하지 않는 상품 ID
+		mockMvc.perform(put("/api/v1/product/{productId}", 9999) // 존재하지 않는 상품 ID
 		                                                  .header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                  .contentType(MediaType.APPLICATION_JSON)
 		                                                  .content(objectMapper.writeValueAsString(request)))
@@ -248,7 +248,7 @@ class ProductControllerIntegrationTest {
 		ProductRequest request = new ProductRequest("수정된 상품명", "수정된 설명", 12000, 3000, null);
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
+		mockMvc.perform(put("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                                .contentType(MediaType.APPLICATION_JSON)
 		                                                                .content(objectMapper.writeValueAsString(request)))
 		       .andExpect(status().isOk())
@@ -277,7 +277,7 @@ class ProductControllerIntegrationTest {
 		);
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
+		mockMvc.perform(put("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                                .contentType(MediaType.APPLICATION_JSON)
 		                                                                .content(objectMapper.writeValueAsString(request)))
 		       .andExpect(status().isOk())
@@ -303,7 +303,7 @@ class ProductControllerIntegrationTest {
 		);
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
+		mockMvc.perform(put("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                                .contentType(MediaType.APPLICATION_JSON)
 		                                                                .content(objectMapper.writeValueAsString(request)))
 		       .andExpect(status().isOk())
@@ -322,7 +322,7 @@ class ProductControllerIntegrationTest {
 		                                            List.of(newOption));
 
 		// when & then
-		mockMvc.perform(put("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
+		mockMvc.perform(put("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                                .contentType(MediaType.APPLICATION_JSON)
 		                                                                .content(objectMapper.writeValueAsString(request)))
 		       .andExpect(status().isOk())
@@ -338,7 +338,7 @@ class ProductControllerIntegrationTest {
 	@DisplayName("상품 삭제 실패 : 다른 유저가 삭제 시도")
 	void 상품_삭제_실패_다른유저() throws Exception {
 		// when & then
-		mockMvc.perform(delete("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(1))
+		mockMvc.perform(delete("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(1))
 		                                                                   .contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isForbidden()); // 403 Forbidden 반환
 	}
@@ -348,7 +348,7 @@ class ProductControllerIntegrationTest {
 	@DisplayName("상품 삭제 실패 : 존재하지 않는 상품")
 	void 상품_삭제_실패_상품_없음() throws Exception {
 		// when & then
-		mockMvc.perform(delete("/product/{productId}", 9999) // 존재하지 않는 상품 ID
+		mockMvc.perform(delete("/api/v1/product/{productId}", 9999) // 존재하지 않는 상품 ID
 		                                                     .header("Authorization", "Bearer " + testUserToken.get(0)).contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isNotFound()); // 404 Not Found 반환
 	}
@@ -358,7 +358,7 @@ class ProductControllerIntegrationTest {
 	@DisplayName("상품 삭제 성공 : 추가한 유저가 삭제 시도")
 	void 상품_삭제_성공() throws Exception {
 		// when & then
-		mockMvc.perform(delete("/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
+		mockMvc.perform(delete("/api/v1/product/{productId}", testProduct.getId()).header("Authorization", "Bearer " + testUserToken.get(0))
 		                                                                   .contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isNoContent()); // 204 No Content 반환
 

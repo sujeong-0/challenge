@@ -124,7 +124,7 @@ class LoginControllerIntegrationTest {
 		       .andExpect(status().isOk());
 
 		// 로그아웃 후 다시 요청하면 401 반환되어야 함
-		mockMvc.perform(get("/product")
+		mockMvc.perform(get("/api/v1/product")
 				                .header("Authorization", "Bearer " + token)
 				                .contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isUnauthorized());
@@ -151,7 +151,7 @@ class LoginControllerIntegrationTest {
 		assertThat(authService.isLoggedOut(token)).isTrue();
 
 		// 블랙리스트된 토큰으로 요청하면 401 반환
-		mockMvc.perform(get("/product")
+		mockMvc.perform(get("/api/v1/product")
 				                .header("Authorization", "Bearer " + token)
 				                .contentType(MediaType.APPLICATION_JSON))
 		       .andExpect(status().isUnauthorized());

@@ -27,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import java.util.List;
 
 /**
- * description    :
+ * description    : 로그인을 위한 JWT와 URL 지정
  * packageName    : com.frankit.challenge.config
  * fileName       : IntelliJ IDEA
  * author         : ggong
@@ -49,9 +49,9 @@ public class SecurityConfig {
 		                                       .permitAll()
 		                                       .requestMatchers("/", "/index.html", "/index.js", "/favicon.ico", "/static/**")
 		                                       .permitAll()
-		                                       .requestMatchers(HttpMethod.GET, "/product")
+		                                       .requestMatchers(HttpMethod.GET, "/api/v1/product")
 		                                       .permitAll()
-		                                       .requestMatchers(HttpMethod.GET, "/product/{productId}")
+		                                       .requestMatchers(HttpMethod.GET, "/api/v1/product/{productId}")
 		                                       .permitAll()
 		                                       .anyRequest()
 		                                       .authenticated())
