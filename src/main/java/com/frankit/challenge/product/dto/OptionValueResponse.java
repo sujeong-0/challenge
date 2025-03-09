@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * description    :
+ * description    :  상품 옵션 값 추가/수정 응답 DTO
  * packageName    : com.frankit.challenge.product.dto
  * fileName       : IntelliJ IDEA
  * author         : ggong

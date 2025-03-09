@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * description    :
+ * description    : 인증/권한 관련 비즈니스 로직 인터페이스의 구현
  * packageName    : com.frankit.challenge.user.service
  * fileName       : IntelliJ IDEA
  * author         : ggong
@@ -66,7 +66,6 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public void logout(String token) {
-//		token = token.substring(7);
 		long expirationTime = jwtTokenProvider.getRemainingExpirationTime(token);
 		blacklist.put(token, System.currentTimeMillis() + expirationTime);
 	}

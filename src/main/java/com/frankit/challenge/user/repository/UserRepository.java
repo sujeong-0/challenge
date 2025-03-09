@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 /**
- * description    :
+ * description    : 유저 repository
  * packageName    : com.frankit.challenge.user.repository
  * fileName       : IntelliJ IDEA
  * author         : ggong

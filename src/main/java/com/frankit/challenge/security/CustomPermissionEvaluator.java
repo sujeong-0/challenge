@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
 /**
- * description    :
+ * description    : URL별 접근 권한 기준 정의
  * packageName    : com.frankit.challenge.security
  * fileName       : IntelliJ IDEA
  * author         : ggong
@@ -53,6 +53,6 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
 	@Override
 	public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
-		return false; // 필요 없으면 구현하지 않아도 됨
+		return false;
 	}
 }

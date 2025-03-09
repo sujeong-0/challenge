@@ -2,10 +2,9 @@ package com.frankit.challenge.user.service;
 
 import com.frankit.challenge.user.dto.LoginRequest;
 import com.frankit.challenge.user.entity.User;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * description    :
+ * description    : 인증/권한 관련 비즈니스 로직 인터페이스
  * packageName    : com.frankit.challenge.user.service
  * fileName       : IntelliJ IDEA
  * author         : ggong

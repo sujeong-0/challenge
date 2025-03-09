@@ -7,8 +7,6 @@ import com.frankit.challenge.product.entity.Product;
 import com.frankit.challenge.product.entity.ProductOption;
 import com.frankit.challenge.product.entity.ProductOptionValue;
 import com.frankit.challenge.product.enums.OptionType;
-import com.frankit.challenge.product.repository.ProductOptionRepository;
-import com.frankit.challenge.product.repository.ProductOptionValueRepository;
 import com.frankit.challenge.product.repository.ProductRepository;
 import com.frankit.challenge.user.entity.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,13 +16,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * description    :
+ * description    : 상품 비즈니스 로직의 인터페이스의 구현
  * packageName    : com.frankit.challenge.product.service
  * fileName       : IntelliJ IDEA
  * author         : ggong

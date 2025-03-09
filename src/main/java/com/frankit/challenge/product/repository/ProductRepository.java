@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 /**
- * description    :
+ * description    : 상품의 repository
  * packageName    : com.frankit.challenge.product.repository
  * fileName       : IntelliJ IDEA
  * author         : ggong

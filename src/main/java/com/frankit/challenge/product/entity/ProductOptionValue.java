@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * description    :
+ * description    : 상품 옵션 값 Entity
  * packageName    : com.frankit.challenge.product.entity
  * fileName       : IntelliJ IDEA
  * author         : ggong

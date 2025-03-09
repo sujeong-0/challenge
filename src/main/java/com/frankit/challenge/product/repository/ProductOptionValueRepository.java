@@ -4,7 +4,7 @@ import com.frankit.challenge.product.entity.ProductOptionValue;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * description    :
+ * description    : 상품 옵션 값의 repository
  * packageName    : com.frankit.challenge.product.repository
  * fileName       : IntelliJ IDEA
  * author         : ggong

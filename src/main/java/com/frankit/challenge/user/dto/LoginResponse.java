@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * description    :
+ * description    : 로그인 응답 DTO
  * packageName    : com.frankit.challenge.user.dto
  * fileName       : IntelliJ IDEA
  * author         : ggong

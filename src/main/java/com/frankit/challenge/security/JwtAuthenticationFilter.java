@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 /**
- * description    :
+ * description    : JWT를 이용한 Filter
  * packageName    : com.frankit.challenge.security
  * fileName       : IntelliJ IDEA
  * author         : ggong

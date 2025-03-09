@@ -1,16 +1,14 @@
 package com.frankit.challenge.product.service;
 
 import com.frankit.challenge.product.dto.ProductRequest;
-import com.frankit.challenge.product.dto.ProductResponse;
 import com.frankit.challenge.product.entity.Product;
 import com.frankit.challenge.user.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * description    :
+ * description    : 상품 비즈니스 로직의 인터페이스
  * packageName    : com.frankit.challenge.product.service
  * fileName       : IntelliJ IDEA
  * author         : ggong

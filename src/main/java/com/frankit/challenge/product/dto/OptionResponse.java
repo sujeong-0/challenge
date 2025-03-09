@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * description    :
+ * description    : 상품 옵션의 추가/수정 응답 DTO
  * packageName    : com.frankit.challenge.product.dto
  * fileName       : IntelliJ IDEA
  * author         : ggong
