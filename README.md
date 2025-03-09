@@ -2,9 +2,6 @@
 
 # 프로젝트 개요
 
-프로젝트 이름
-: 프랜킷 사전 과제
-
 기술 스택
 : Java 23, Spring Boot 3.4.3, Gradle, JPA, Spring Security, JWT
 : H2
