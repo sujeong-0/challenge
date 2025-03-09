@@ -69,8 +69,8 @@
        "shippingFee": "배송비",
        "createdBy": "생성한 유저 아이디",
        "createAt" : "생성일",
-       "createdBy": "수정한 유저 아이디",
-       "createAt" : "수정일"
+       "updatedBy": "수정한 유저 아이디",
+       "updatedAt" : "수정일"
      }
     ],
     "totalPages": 10,
@@ -166,8 +166,8 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     },
     {
       "id": "옵션 id",
@@ -183,8 +183,8 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     },
     {
       "id": "옵션 id",
@@ -198,14 +198,14 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     }
     ],
     "createdBy": "생성한 유저 아이디",
     "createAt" : "생성일",
-    "createdBy": "수정한 유저 아이디",
-    "createAt" : "수정일"
+    "updatedBy": "수정한 유저 아이디",
+    "updatedAt" : "수정일"
   }
   ```
 
@@ -284,8 +284,8 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     },
     {
       "id": "옵션 id",
@@ -301,8 +301,8 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     },
     {
       "id": "옵션 id",
@@ -316,14 +316,14 @@
       "additionalPrice": "옵션 추가 비용",
       "createdBy": "생성한 유저 아이디",
       "createAt" : "생성일",
-      "createdBy": "수정한 유저 아이디",
-      "createAt" : "수정일"
+      "updatedBy": "수정한 유저 아이디",
+      "updatedAt" : "수정일"
     }
     ],
     "createdBy": "생성한 유저 아이디",
     "createAt" : "생성일",
-    "createdBy": "수정한 유저 아이디",
-    "createAt" : "수정일"
+    "updatedBy": "수정한 유저 아이디",
+    "updatedAt" : "수정일"
   }
   ```
 
